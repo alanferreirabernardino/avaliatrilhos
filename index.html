@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvaliaTrilhos - Avaliação de Estações de Trem e Metrô</title>
+</head>
+<body>
+
+    <!-- Cabeçalho Principal -->
+    <header>
+        <h1>AvaliaTrilhos 🚆</h1>
+        <p>Acompanhe e avalie as estações de metrô e trem de São Paulo.</p>
+    </header>
+
+    <hr>
+
+    <!-- Área Principal -->
+    <main>
+        <!-- Seção do Formulário -->
+        <section>
+            <h2>Deixe sua Avaliação</h2>
+            
+            <form>
+                <!-- Campo 1: Seleção da Linha -->
+                <div>
+                    <label for="linha">Linha:</label><br>
+                    <select id="linha" name="linha">
+                        <option value="linha1">Linha 1 - Azul</option>
+                        <option value="linha2">Linha 2 - Verde</option>
+                        <option value="linha3">Linha 3 - Vermelha</option>
+                        <option value="linha4">Linha 4 - Amarela</option>
+                        <option value="linha5">Linha 5 - Lilás</option>
+                        <option value="linha7">Linha 7 - Rubi (CPTM)</option>
+                        <option value="linha11">Linha 11 - Coral (CPTM)</option>
+                    </select>
+                </div>
+
+                <br>
+
+                <!-- Campo 2: Nome da Estação -->
+                <div>
+                    <label for="estacao">Nome da Estação:</label><br>
+                    <input type="text" id="estacao" placeholder="Ex: Sé, Paulista, Luz...">
+                </div>
+
+                <br>
+
+                <!-- Campo 3: Nota -->
+                <div>
+                    <label for="nota">Sua Nota (1 a 5):</label><br>
+                    <select id="nota" name="nota">
+                        <option value="1">1 - Péssima</option>
+                        <option value="2">2 - Ruim</option>
+                        <option value="3">3 - Regular</option>
+                        <option value="4">4 - Boa</option>
+                        <option value="5">5 - Excelente</option>
+                    </select>
+                </div>
+
+                <br>
+
+                <!-- Campo 4: Comentário livre -->
+                <div>
+                    <label for="comentario">Sua Avaliação:</label><br>
+                    <textarea id="comentario" rows="4" cols="40" placeholder="Conte como foi sua experiência nessa estação..."></textarea>
+                </div>
+
+                <br>
+
+                <!-- Botão de Enviar -->
+                <button type="submit">Publicar Avaliação</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Seção onde as avaliações publicadas vão aparecer -->
+        <section>
+            <h2>Últimas Avaliações</h2>
+            <p>Ainda não há avaliações cadastradas.</p>
+        </section>
+    </main>
+
+</body>
+</html>
