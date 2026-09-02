@@ -27,14 +27,13 @@ body {
     transition: background-color 0.4s ease;
 }
 
-/* Aumentado para 1000px para dar espaço às duas colunas */
 header, main {
     max-width: 1000px;
     margin: 0 auto 20px auto;
 }
 
 /* ==========================================
-   3. CABEÇALHO
+   3. CABEÇALHO E BARRA DE FERRAMENTAS
    ========================================== */
 header {
     background-color: var(--linha-1-azul);
@@ -54,26 +53,50 @@ header h1 {
 header p {
     font-size: 0.95rem;
     opacity: 0.9;
+    margin-bottom: 16px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-util {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s ease;
+}
+
+.btn-util:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-1px);
 }
 
 /* ==========================================
-   4. LAYOUT EM DUAS COLUNAS (GRID)
+   4. LAYOUT EM GRID (RESPONSIVO)
    ========================================== */
 .layout-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Padrão mobile: 1 coluna */
+    grid-template-columns: 1fr;
     gap: 20px;
     align-items: start;
 }
 
-/* Responsividade: Telas a partir de 768px (Computadores e Tablets) */
 @media (min-width: 768px) {
     .layout-grid {
-        grid-template-columns: 1fr 1fr; /* Divide em 2 colunas iguais */
+        grid-template-columns: 1fr 1fr;
     }
 }
 
-/* Cartões das Colunas */
 section {
     background-color: var(--card-bg);
     padding: 24px;
@@ -139,9 +162,76 @@ button[type="submit"]:hover {
     filter: brightness(0.9);
 }
 
-/* Mensagem de Feed Vazio */
+/* Feed Vazio */
 .feed-vazio {
     color: #64748b;
     font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   6. JANELAS MODAIS (POP-UPS)
+   ========================================== */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: modalEntrada 0.3s ease;
+}
+
+@keyframes modalEntrada {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-modal {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #000;
+}
+
+.item-contato {
+    background-color: var(--bg-color);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-top: 12px;
+}
+
+.item-contato strong {
+    color: var(--linha-1-azul);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.item-contato p {
     font-size: 0.9rem;
 }
