@@ -15,73 +15,73 @@
     </header>
 
     <!-- Área Principal -->
+   <!-- Área Principal com Layout em Grid -->
     <main>
-        <!-- Seção do Formulário -->
-        <section>
-            <h2>Deixe sua Avaliação</h2>
+        <div class="layout-grid">
             
-            <form id="form-avaliacao">
-                <!-- Campo 1: Seleção da Linha -->
-                <div class="form-group">
-                    <label for="linha">Linha:</label>
-                    <select id="linha" name="linha">
-                        <option value="">Selecione uma linha...</option>
-                        <option value="linha1">Linha 1 - Azul</option>
-                        <option value="linha2">Linha 2 - Verde</option>
-                        <option value="linha3">Linha 3 - Vermelha</option>
-                        <option value="linha4">Linha 4 - Amarela</option>
-                        <option value="linha5">Linha 5 - Lilás</option>
-                        <option value="linha6">Linha 6 - Laranja</option>
-                        <option value="linha7">Linha 7 - Rubi</option>
-                        <option value="linha8">Linha 8 - Diamante</option>
-                        <option value="linha9">Linha 9 - Esmeralda</option>
-                        <option value="linha10">Linha 10 - Turquesa</option>
-                        <option value="linha11">Linha 11 - Coral</option>
-                        <option value="linha12">Linha 12 - Safira</option>
-                        <option value="linha13">Linha 13 - Jade</option>
-                        <option value="linha15">Linha 15 - Prata</option>
-                        <option value="linha17">Linha 17 - Ouro</option>
-                    </select>
+            <!-- Coluna da Esquerda: Formulário -->
+            <section class="coluna-form">
+                <h2>Deixe sua Avaliação</h2>
+                
+                <form id="form-avaliacao">
+                    <div class="form-group">
+                        <label for="linha">Linha:</label>
+                        <select id="linha" name="linha">
+                            <option value="">Selecione uma linha...</option>
+                            <option value="linha1">Linha 1 - Azul</option>
+                            <option value="linha2">Linha 2 - Verde</option>
+                            <option value="linha3">Linha 3 - Vermelha</option>
+                            <option value="linha4">Linha 4 - Amarela</option>
+                            <option value="linha5">Linha 5 - Lilás</option>
+                            <option value="linha6">Linha 6 - Laranja</option>
+                            <option value="linha7">Linha 7 - Rubi</option>
+                            <option value="linha8">Linha 8 - Diamante</option>
+                            <option value="linha9">Linha 9 - Esmeralda</option>
+                            <option value="linha10">Linha 10 - Turquesa</option>
+                            <option value="linha11">Linha 11 - Coral</option>
+                            <option value="linha12">Linha 12 - Safira</option>
+                            <option value="linha13">Linha 13 - Jade</option>
+                            <option value="linha15">Linha 15 - Prata</option>
+                            <option value="linha17">Linha 17 - Ouro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estacao">Estação:</label>
+                        <select id="estacao" name="estacao">
+                            <option value="">Selecione uma linha primeiro...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nota">Sua Nota (1 a 5):</label>
+                        <select id="nota" name="nota">
+                            <option value="5">5 - Excelente ⭐⭐⭐⭐⭐</option>
+                            <option value="4">4 - Boa ⭐⭐⭐⭐</option>
+                            <option value="3">3 - Regular ⭐⭐⭐</option>
+                            <option value="2">2 - Ruim ⭐⭐</option>
+                            <option value="1">1 - Péssima ⭐</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comentario">Sua Avaliação:</label>
+                        <textarea id="comentario" rows="4" placeholder="Conte como foi sua experiência nessa estação..."></textarea>
+                    </div>
+
+                    <button type="submit">Publicar Avaliação</button>
+                </form>
+            </section>
+
+            <!-- Coluna da Direita: Feed de Avaliações -->
+            <section class="coluna-feed">
+                <h2>Últimas Avaliações</h2>
+                <div id="mural-avaliacoes">
+                    <p class="feed-vazio">Ainda não há avaliações cadastradas.</p>
                 </div>
+            </section>
 
-                <!-- Campo 2: Nome da Estação -->
-                <div class="form-group">
-                    <label for="estacao">Estação:</label>
-                    <select id="estacao" name="estacao">
-                        <option value="">Selecione uma linha primeiro...</option>
-                    </select>
-                </div>
-
-                <!-- Campo 3: Nota -->
-                <div class="form-group">
-                    <label for="nota">Sua Nota (1 a 5):</label>
-                    <select id="nota" name="nota">
-                        <option value="5">5 - Excelente ⭐⭐⭐⭐⭐</option>
-                        <option value="4">4 - Boa ⭐⭐⭐⭐</option>
-                        <option value="3">3 - Regular ⭐⭐⭐</option>
-                        <option value="2">2 - Ruim ⭐⭐</option>
-                        <option value="1">1 - Péssima ⭐</option>
-                    </select>
-                </div>
-
-                <!-- Campo 4: Comentário livre -->
-                <div class="form-group">
-                    <label for="comentario">Sua Avaliação:</label>
-                    <textarea id="comentario" rows="4" placeholder="Conte como foi sua experiência nessa estação..."></textarea>
-                </div>
-
-                <!-- Botão de Enviar -->
-                <button type="submit">Publicar Avaliação</button>
-            </form>
-        </section>
-
-        <!-- Seção onde as avaliações publicadas vão aparecer -->
-        <section>
-            <h2>Últimas Avaliações</h2>
-            <div id="mural-avaliacoes">
-                <p style="color: #64748b; font-style: italic;">Ainda não há avaliações cadastradas.</p>
-            </div>
-        </section>
+        </div>
     </main>
 
         <!-- Conectando o arquivo JavaScript -->
