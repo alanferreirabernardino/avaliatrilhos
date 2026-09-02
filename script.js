@@ -1,91 +1,154 @@
-// 1. BANCO DE DADOS DAS ESTAÇÕES POR LINHA
+// 1. BANCO DE DADOS COMPLETO DE ESTAÇÕES POR LINHA (EM ORDEM GEOGRÁFICA)
 const estacoesPorLinha = {
-    linha1: ["Jabaquara", "Conceição", "São Judas", "Saúde", "Praça da Árvore", "Santa Cruz", "Vila Mariana", "Ana Rosa", "Paraíso", "Vergueiro", "São Joaquim" "Sé", "Luz", "Tucuruvi"],
-    linha2: ["Vila Madalena", "Consolação", "Brigadeiro", "Ana Rosa", "Tamanduateí", "Vila Prudente"],
-    linha3: ["Corinthians-Itaquera", "Tatuapé", "Brás", "Sé", "República", "Palmeiras-Barra Funda"],
-    linha4: ["Luz", "República", "Paulista", "Fradique Coutinho", "Pinheiros", "São Paulo - Morumbi", "Vila Sônia"],
-    linha5: ["Capão Redondo", "Santo Amaro", "Largo Treze", "Eucaliptos", "Moema", "Chácara Klabin"],
-    linha6: ["Brasilândia", "Freguesia do Ó", "Perdizes", "PUC-Cardoso de Almeida", "São Joaquim"],
-    linha7: ["Jundiaí", "Francisco Morato", "Franco da Rocha", "Caieiras", "Perus", "Palmeiras-Barra Funda"],
-    linha8: ["Jandira", "Barueri", "Carapicuíba", "Osasco", "Domingos de Moraes", "Júlio Prestes"],
-    linha9: ["Osasco", "Pinheiros", "Vila Olímpia", "Santo Amaro", "Grajaú", "Bruno Covas/Mendes-Vila Natal"],
-    linha10: ["Rio Grande da Serra", "Ribeirão Pires", "Santo André", "São Caetano do Sul", "Tamanduateí", "Brás"],
-    linha11: ["Estudantes", "Mogi das Cruzes", "Suzano", "Guaianases", "Tatuapé", "Luz"],
-    linha12: ["Calmon Viana", "Itaquaquecetuba", "Engenheiro Goulart", "Tatuapé", "Brás"],
-    linha13: ["Aeroporto-Guarulhos", "Guarulhos-CECAP", "Engenheiro Goulart"],
-    linha17: ["Washington Luís", "Aeroporto de Congonhas", "Brooklin Paulista", "Morumbi"]
+    linha1: [
+        "Tucuruvi", "Parada Inglesa", "Jardim São Paulo-Ayrton Senna", "Santana", "Carandiru", 
+        "Portuguesa-Tietê", "Armênia", "Tiradentes", "Luz", "São Bento", "Sé", "Japão-Liberdade", 
+        "São Joaquim", "Vergueiro", "Paraíso", "Ana Rosa", "Vila Mariana", "Santa Cruz", 
+        "Praça da Árvore", "Saúde", "São Judas", "Conceição", "Jabaquara"
+    ],
+    linha2: [
+        "Vila Madalena", "Sumaré", "Clínicas", "Paulista-Pernambucanas", "Consolação", "Trianon-Masp", 
+        "Brigadeiro", "Paraíso", "Ana Rosa", "Chácara Klabin", "Santos-Imigrantes", "Alto do Ipiranga", 
+        "Sacomã", "Tamanduateí", "Vila Prudente"
+    ],
+    linha3: [
+        "Palmeiras-Barra Funda", "Marechal Deodoro", "Santa Cecília", "República", "Anhangabaú", 
+        "Sé", "Pedro II", "Brás", "Bresser-Mooca", "Belém", "Tatuapé", "Carrão-Assaí Atacadista", 
+        "Penha-Besni", "Vila Matilde", "Guilhermina-Esperança", "Patriarca-Vila Ré", 
+        "Artur Alvim", "Corinthians-Itaquera"
+    ],
+    linha4: [
+        "Luz", "República", "Higienópolis-Mackenzie", "Paulista-Pernambucanas", "Oscar Freire", 
+        "Fradique Coutinho", "Faria Lima", "Pinheiros", "Serafina/Vila Sônia"
+    ],
+    linha5: [
+        "Capão Redondo", "Campo Limpo", "Vila das Belezas", "Giovanni Gronchi", "Santo Amaro", 
+        "Largo Treze", "Adolfo Pinheiro", "Alto da Boa Vista", "Borba Gato", "Brooklin", 
+        "Campo Belo", "Eucaliptos", "Moema", "AAPC-AACD-Servidor", "Hospital São Paulo", 
+        "Santa Cruz", "Chácara Klabin"
+    ],
+    linha6: [
+        "Brasilândia", "Vila Cardoso", "Itaberaba-Hospital Vila Penteado", "João Paulo I", 
+        "Freguesia do Ó", "Santa Marina", "Água Branca", "SESC-Pompéia", "Perdizes", 
+        "PUC-Cardoso de Almeida", "FAAP-Pacaembu", "Higienópolis-Mackenzie", "14 de Bis", 
+        "Bexiga", "São Joaquim"
+    ],
+    linha7: [
+        "Jundiaí", "Várzea Paulista", "Campo Limpo Paulista", "Botujuru", "Francisco Morato", 
+        "Baltazar Fidélis", "Franco da Rocha", "Caieiras", "Perus", "Vila Aurora", "Jaraguá", 
+        "Vila Clarice", "Pirituba", "Piqueri", "Lapa", "Água Branca", "Palmeiras-Barra Funda"
+    ],
+    linha8: [
+        "Júlio Prestes", "Palmeiras-Barra Funda", "Lapa", "Domingos de Moraes", "Imperatriz Leopoldina", 
+        "Presidente Altino", "Osasco", "Comandante Sampaio", "Quitaúna", "General Miguel Costa", 
+        "Carapicuíba", "Santa Terezinha", "Antonio João", "Barueri", "Jardim Belval", "Jardim Silveira", 
+        "Jandira", "Sagrado Coração", "Engenheiro Cardoso", "Itapevi"
+    ],
+    linha9: [
+        "Osasco", "Presidente Altino", "Ceasa", "Villa Lobos-Jaguaré", "Cidade Universitária", 
+        "Pinheiros", "Eucaliptos/Hebraica-Jubran", "Cidade Jardim", "Vila Olímpia", "Berrini", 
+        "Morumbi", "Granja Julieta", "Santo Amaro", "Socorro", "Jurubatuba", "Autódromo", 
+        "Primavera-Interlagos", "Grajaú", "Bruno Covas/Mendes-Vila Natal"
+    ],
+    linha10: [
+        "Brás", "Juventus-Mooca", "Ipiranga", "Tamanduateí", "São Caetano do Sul-Prefeito Walter Braido", 
+        "Utinga", "Prefeito Saladino", "Santo André-Prefeito Celso Daniel", "Capuava", 
+        "Mauá", "Guapituba", "Ribeirão Pires-Vicente Matheus", "Rio Grande da Serra"
+    ],
+    linha11: [
+        "Luz", "Brás", "Tatuapé", "Corinthians-Itaquera", "Dom Bosco", "José Bonifácio", 
+        "Guaianases", "Antonio Gianetti Neto", "Ferraz de Vasconcelos", "Poá", "Calmon Viana", 
+        "Suzano", "Jundiapeba", "Braz Cubas", "Mogi das Cruzes", "Estudantes"
+    ],
+    linha12: [
+        "Brás", "Tatuapé", "Engenheiro Goulart", "USP Leste", "Comendador Ermelino", 
+        "São Miguel Paulista", "Jardim Helena-Vila Mara", "Itaquaquecetuba", "Aracaré", 
+        "Calmon Viana"
+    ],
+    linha13: [
+        "Engenheiro Goulart", "Guarulhos-CECAP", "Aeroporto-Guarulhos"
+    ],
+    linha15: [
+        "Vila Prudente", "Oratório", "São Lucas", "Camilo Haddad", "Vila Tolstói", 
+        "Vila União", "Jardim Planalto", "Sapopemba", "Fazenda da Juta", "São Mateus", 
+        "Jardim Colonial"
+    ],
+    linha17: [
+        "Washington Luís", "Aeroporto de Congonhas", "Brooklin Paulista", "Vereador José Diniz", 
+        "Campo Belo", "Vila Cordeiro", "Chucri Zaidan", "Morumbi"
+    ]
 };
 
-// 2. MAPEAMENTO DAS CORES DAS LINHAS
+// 2. CORES OFICIAIS DE CADA LINHA
 const coresPorLinha = {
-    linha1: "var(--linha-1-azul)",
-    linha2: "var(--linha-2-verde)",
-    linha3: "var(--linha-3-vermelha)",
-    linha4: "var(--linha-4-amarela)",
-    linha5: "var(--linha-5-lilas)",
-    linha6: "#ff6a00", // Laranja
-    linha7: "var(--linha-7-rubi)",
-    linha8: "#808080", // Diamante/Cinza
-    linha9: "#00a88f", // Esmeralda
+    linha1: "#0033a0",  // Azul
+    linha2: "#007a33",  // Verde
+    linha3: "#ee3124",  // Vermelha
+    linha4: "#ffbf00",  // Amarela
+    linha5: "#9b26b6",  // Lilás
+    linha6: "#ff6a00",  // Laranja
+    linha7: "#a6192e",  // Rubi
+    linha8: "#808080",  // Diamante
+    linha9: "#00a88f",  // Esmeralda
     linha10: "#00a3e0", // Turquesa
-    linha11: "var(--linha-11-coral)",
+    linha11: "#f37021", // Coral
     linha12: "#002f6c", // Safira
     linha13: "#00b140", // Jade
+    linha15: "#848484", // Prata
     linha17: "#c89d28"  // Ouro
 };
 
-// 3. CAPTURA DOS ELEMENTOS DO HTML
-const selectLinha = document.getElementById("linha");
-const selectEstacao = document.getElementById("estacao");
-const header = document.querySelector("header");
+// Executa quando o documento estiver totalmente carregado
+document.addEventListener("DOMContentLoaded", function () {
+    const selectLinha = document.getElementById("linha");
+    const selectEstacao = document.getElementById("estacao");
+    const header = document.querySelector("header");
 
-// 4. EVENTO: QUANDO O USUÁRIO MUDA A LINHA
-selectLinha.addEventListener("change", function () {
-    const linhaSelecionada = selectLinha.value;
-
-    // A. Limpa as opções anteriores da lista de estações
-    selectEstacao.innerHTML = "";
-
-    if (linhaSelecionada && estacoesPorLinha[linhaSelecionada]) {
-        // Habilita a lista de estações
-        selectEstacao.disabled = false;
-
-        // Opção padrão
-        const opcaoPadrao = document.createElement("option");
-        opcaoPadrao.text = "Selecione a estação...";
-        opcaoPadrao.value = "";
-        selectEstacao.appendChild(opcaoPadrao);
-
-        // Preenche com as estações da linha escolhida
-        estacoesPorLinha[linhaSelecionada].forEach(function (estacao) {
-            const opcao = document.createElement("option");
-            opcao.value = estacao;
-            opcao.text = estacao;
-            selectEstacao.appendChild(opcao);
-        });
-
-        // B. Altera a cor do fundo do Cabeçalho para a cor da linha!
-        if (coresPorLinha[linhaSelecionada]) {
-            header.style.backgroundColor = coresPorLinha[linhaSelecionada];
-            
-            // Ajusta a cor do texto para linhas claras como a Amarela
-            if (linhaSelecionada === "linha4" || linhaSelecionada === "linha6") {
-                header.style.color = "#1e293b";
-            } else {
-                header.style.color = "#ffffff";
-            }
-        }
-
-    } else {
-        // Se nenhuma linha estiver selecionada
-        const opcaoVazia = document.createElement("option");
-        opcaoVazia.text = "Selecione uma linha primeiro...";
-        opcaoVazia.value = "";
-        selectEstacao.appendChild(opcaoVazia);
-        selectEstacao.disabled = true;
-
-        // Volta a cor padrão do cabeçalho (Azul)
-        header.style.backgroundColor = "var(--linha-1-azul)";
-        header.style.color = "#ffffff";
+    if (!selectLinha || !selectEstacao) {
+        console.error("Elementos do formulário não foram encontrados!");
+        return;
     }
+
+    selectLinha.addEventListener("change", function () {
+        const linhaSelecionada = selectLinha.value;
+
+        // Limpa o select de estações
+        selectEstacao.innerHTML = "";
+
+        if (linhaSelecionada && estacoesPorLinha[linhaSelecionada]) {
+            // Opção padrão inicial
+            const opcaoPadrao = document.createElement("option");
+            opcaoPadrao.text = "Selecione a estação...";
+            opcaoPadrao.value = "";
+            selectEstacao.appendChild(opcaoPadrao);
+
+            // Preenche o dropdown na ordem exata do array
+            estacoesPorLinha[linhaSelecionada].forEach(function (estacao) {
+                const opcao = document.createElement("option");
+                opcao.value = estacao;
+                opcao.text = estacao;
+                selectEstacao.appendChild(opcao);
+            });
+
+            // Altera a cor de fundo do cabeçalho
+            if (coresPorLinha[linhaSelecionada]) {
+                header.style.backgroundColor = coresPorLinha[linhaSelecionada];
+                
+                // Ajusta o contraste do texto para linhas com fundo claro
+                if (linhaSelecionada === "linha4" || linhaSelecionada === "linha6" || linhaSelecionada === "linha15") {
+                    header.style.color = "#1e293b";
+                } else {
+                    header.style.color = "#ffffff";
+                }
+            }
+        } else {
+            const opcaoVazia = document.createElement("option");
+            opcaoVazia.text = "Selecione uma linha primeiro...";
+            opcaoVazia.value = "";
+            selectEstacao.appendChild(opcaoVazia);
+
+            header.style.backgroundColor = "#0033a0";
+            header.style.color = "#ffffff";
+        }
+    });
 });
