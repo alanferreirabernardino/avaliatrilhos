@@ -199,3 +199,40 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+// ==========================================
+    // LÓGICA DAS JANELAS MODAIS (POP-UPS)
+    // ==========================================
+    const modalMapa = document.getElementById("modal-mapa");
+    const modalContatos = document.getElementById("modal-contatos");
+    
+    const btnMapa = document.getElementById("btn-mapa");
+    const btnContatos = document.getElementById("btn-contatos");
+    const btnsFechar = document.querySelectorAll(".close-modal");
+
+    // Abrir modal de mapa
+    if (btnMapa) {
+        btnMapa.addEventListener("click", function () {
+            modalMapa.style.display = "flex";
+        });
+    }
+
+    // Abrir modal de contatos
+    if (btnContatos) {
+        btnContatos.addEventListener("click", function () {
+            modalContatos.style.display = "flex";
+        });
+    }
+
+    // Fechar ao clicar no "X"
+    btnsFechar.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            modalMapa.style.display = "none";
+            modalContatos.style.display = "none";
+        });
+    });
+
+    // Fechar ao clicar fora da janela (no fundo escuro)
+    window.addEventListener("click", function (event) {
+        if (event.target === modalMapa) modalMapa.style.display = "none";
+        if (event.target === modalContatos) modalContatos.style.display = "none";
+    });
