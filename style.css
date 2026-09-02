@@ -1,24 +1,16 @@
 /* ==========================================
-   1. VARIÁVEIS DE CORES (LINHAS DO METRÔ/CPTM)
+   1. VARIÁVEIS DE CORES
    ========================================== */
 :root {
     --bg-color: #f4f6f8;
     --card-bg: #ffffff;
     --text-color: #1e293b;
     --border-color: #e2e8f0;
-    
-    /* Cores das Linhas de SP */
     --linha-1-azul: #0033a0;
-    --linha-2-verde: #007a33;
-    --linha-3-vermelha: #ee3124;
-    --linha-4-amarela: #ffbf00;
-    --linha-5-lilas: #9b26b6;
-    --linha-7-rubi: #a6192e;
-    --linha-11-coral: #f37021;
 }
 
 /* ==========================================
-   2. ESTILOS GERAIS E RESET BÁSICO
+   2. RESET E ESTRUTURA GERAL
    ========================================== */
 * {
     box-sizing: border-box;
@@ -32,13 +24,12 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     padding: 20px;
-    /* Suaviza a transição de cor do fundo ao trocar de linha */
     transition: background-color 0.4s ease;
 }
 
-/* Limitador de largura para centralizar a aplicação */
+/* Aumentado para 1000px para dar espaço às duas colunas */
 header, main {
-    max-width: 600px;
+    max-width: 1000px;
     margin: 0 auto 20px auto;
 }
 
@@ -52,7 +43,6 @@ header {
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    /* Suaviza a transição de cor e do texto do cabeçalho */
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
@@ -67,25 +57,41 @@ header p {
 }
 
 /* ==========================================
-   4. FORMULÁRIO E CARTÕES DE SEÇÃO
+   4. LAYOUT EM DUAS COLUNAS (GRID)
    ========================================== */
+.layout-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Padrão mobile: 1 coluna */
+    gap: 20px;
+    align-items: start;
+}
+
+/* Responsividade: Telas a partir de 768px (Computadores e Tablets) */
+@media (min-width: 768px) {
+    .layout-grid {
+        grid-template-columns: 1fr 1fr; /* Divide em 2 colunas iguais */
+    }
+}
+
+/* Cartões das Colunas */
 section {
     background-color: var(--card-bg);
     padding: 24px;
     border-radius: 12px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
 }
 
 section h2 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     margin-bottom: 16px;
     color: var(--text-color);
     border-bottom: 2px solid var(--bg-color);
     padding-bottom: 8px;
 }
 
-/* Estilização dos Campos do Formulário */
+/* ==========================================
+   5. FORMULÁRIO E CAMPOS
+   ========================================== */
 .form-group {
     margin-bottom: 16px;
 }
@@ -102,7 +108,7 @@ input, select, textarea {
     padding: 10px 12px;
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     background-color: #fff;
     transition: border-color 0.2s ease;
 }
@@ -116,7 +122,6 @@ textarea {
     resize: vertical;
 }
 
-/* Botão Principal */
 button[type="submit"] {
     width: 100%;
     background-color: var(--linha-1-azul);
@@ -127,10 +132,16 @@ button[type="submit"] {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    /* Suaviza a transição de cor do botão */
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 button[type="submit"]:hover {
     filter: brightness(0.9);
+}
+
+/* Mensagem de Feed Vazio */
+.feed-vazio {
+    color: #64748b;
+    font-style: italic;
+    font-size: 0.9rem;
 }
