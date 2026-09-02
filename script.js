@@ -1,4 +1,6 @@
-// 1. BANCO DE DADOS COMPLETO DE ESTAÇÕES POR LINHA (EM ORDEM GEOGRÁFICA)
+// ==========================================
+// 1. BANCO DE DADOS DE ESTAÇÕES POR LINHA
+// ==========================================
 const estacoesPorLinha = {
     linha1: [
         "Tucuruvi", "Parada Inglesa", "Jardim São Paulo-Ayrton Senna", "Santana", "Carandiru", 
@@ -7,7 +9,7 @@ const estacoesPorLinha = {
         "Praça da Árvore", "Saúde", "São Judas", "Conceição", "Jabaquara"
     ],
     linha2: [
-        "Vila Madalena", "Sumaré", "Clínicas", "Paulista-Pernambucanas", "Consolação", "Trianon-Masp", 
+        "Vila Madalena", "Sumaré", "Clínicas", "Paulista", "Consolação", "Trianon-Masp", 
         "Brigadeiro", "Paraíso", "Ana Rosa", "Chácara Klabin", "Santos-Imigrantes", "Alto do Ipiranga", 
         "Sacomã", "Tamanduateí", "Vila Prudente"
     ],
@@ -18,20 +20,20 @@ const estacoesPorLinha = {
         "Artur Alvim", "Corinthians-Itaquera"
     ],
     linha4: [
-        "Luz", "República", "Higienópolis-Mackenzie", "Paulista-Pernambucanas", "Oscar Freire", 
-        "Fradique Coutinho", "Faria Lima", "Pinheiros", "Serafina/Vila Sônia"
+        "Luz", "República", "Higienópolis-Mackenzie", "Paulista", "Oscar Freire", 
+        "Fradique Coutinho", "Faria Lima", "Pinheiros", "São Paulo-Morumbi", "Vila Sônia"
     ],
     linha5: [
         "Capão Redondo", "Campo Limpo", "Vila das Belezas", "Giovanni Gronchi", "Santo Amaro", 
         "Largo Treze", "Adolfo Pinheiro", "Alto da Boa Vista", "Borba Gato", "Brooklin", 
-        "Campo Belo", "Eucaliptos", "Moema", "AAPC-AACD-Servidor", "Hospital São Paulo", 
+        "Campo Belo", "Eucaliptos", "Moema", "AACD-Servidor", "Hospital São Paulo", 
         "Santa Cruz", "Chácara Klabin"
     ],
     linha6: [
         "Brasilândia", "Vila Cardoso", "Itaberaba-Hospital Vila Penteado", "João Paulo I", 
         "Freguesia do Ó", "Santa Marina", "Água Branca", "SESC-Pompéia", "Perdizes", 
         "PUC-Cardoso de Almeida", "FAAP-Pacaembu", "Higienópolis-Mackenzie", "14 de Bis", 
-        "Bexiga", "São Joaquim"
+        "Bela Vista", "São Joaquim"
     ],
     linha7: [
         "Jundiaí", "Várzea Paulista", "Campo Limpo Paulista", "Botujuru", "Francisco Morato", 
@@ -45,10 +47,10 @@ const estacoesPorLinha = {
         "Jandira", "Sagrado Coração", "Engenheiro Cardoso", "Itapevi"
     ],
     linha9: [
-        "Osasco", "Presidente Altino", "Ceasa", "Villa Lobos-Jaguaré", "Cidade Universitária", 
-        "Pinheiros", "Eucaliptos/Hebraica-Jubran", "Cidade Jardim", "Vila Olímpia", "Berrini", 
+        "Osasco", "Presidente Altino", "Ceasa", "Vila Lobos-Jaguaré", "Cidade Universitária", 
+        "Pinheiros", "Hebraica-Jubran", "Cidade Jardim", "Vila Olímpia", "Berrini", 
         "Morumbi", "Granja Julieta", "Santo Amaro", "Socorro", "Jurubatuba", "Autódromo", 
-        "Primavera-Interlagos", "Grajaú", "Bruno Covas/Mendes-Vila Natal"
+        "Primavera-Interlagos", "Grajaú", "Mendes-Vila Natal"
     ],
     linha10: [
         "Brás", "Juventus-Mooca", "Ipiranga", "Tamanduateí", "São Caetano do Sul-Prefeito Walter Braido", 
@@ -79,7 +81,9 @@ const estacoesPorLinha = {
     ]
 };
 
-// 2. CORES OFICIAIS DE CADA LINHA
+// ==========================================
+// 2. CORES OFICIAIS (PARA HEADER E BOTÃO)
+// ==========================================
 const coresPorLinha = {
     linha1: "#0033a0",  // Azul
     linha2: "#007a33",  // Verde
@@ -98,11 +102,35 @@ const coresPorLinha = {
     linha17: "#c89d28"  // Ouro
 };
 
-// Executa quando o documento estiver totalmente carregado
+// ==========================================
+// 3. CORES DE FUNDO PASTÉIS/SUAVES (PARA O BODY)
+// ==========================================
+const coresFundoSuave = {
+    linha1: "#e8effd",  // Azul pastel
+    linha2: "#e6f4ea",  // Verde pastel
+    linha3: "#fce8e6",  // Vermelho pastel
+    linha4: "#fef8e7",  // Amarelo pastel
+    linha5: "#f3e8f8",  // Lilás pastel
+    linha6: "#fff0e6",  // Laranja pastel
+    linha7: "#f8e6e8",  // Rubi pastel
+    linha8: "#f0f0f0",  // Cinza/Diamante
+    linha9: "#e6f7f5",  // Esmeralda pastel
+    linha10: "#e6f5fc", // Turquesa pastel
+    linha11: "#fceee6", // Coral pastel
+    linha12: "#e6ecf5", // Safira pastel
+    linha13: "#e6f8ec", // Jade pastel
+    linha15: "#f1f1f1", // Prata pastel
+    linha17: "#f8f3e6"  // Ouro pastel
+};
+
+// ==========================================
+// 4. LÓGICA DE INTERAÇÃO COM O DOM
+// ==========================================
 document.addEventListener("DOMContentLoaded", function () {
     const selectLinha = document.getElementById("linha");
     const selectEstacao = document.getElementById("estacao");
     const header = document.querySelector("header");
+    const btnSubmit = document.querySelector('button[type="submit"]');
 
     if (!selectLinha || !selectEstacao) {
         console.error("Elementos do formulário não foram encontrados!");
@@ -112,17 +140,17 @@ document.addEventListener("DOMContentLoaded", function () {
     selectLinha.addEventListener("change", function () {
         const linhaSelecionada = selectLinha.value;
 
-        // Limpa o select de estações
+        // Limpa as opções do menu de estações
         selectEstacao.innerHTML = "";
 
         if (linhaSelecionada && estacoesPorLinha[linhaSelecionada]) {
-            // Opção padrão inicial
+            // Cria a opção neutra inicial
             const opcaoPadrao = document.createElement("option");
             opcaoPadrao.text = "Selecione a estação...";
             opcaoPadrao.value = "";
             selectEstacao.appendChild(opcaoPadrao);
 
-            // Preenche o dropdown na ordem exata do array
+            // Preenche o menu com as estações da linha
             estacoesPorLinha[linhaSelecionada].forEach(function (estacao) {
                 const opcao = document.createElement("option");
                 opcao.value = estacao;
@@ -130,25 +158,44 @@ document.addEventListener("DOMContentLoaded", function () {
                 selectEstacao.appendChild(opcao);
             });
 
-            // Altera a cor de fundo do cabeçalho
+            // 1. Aplica a cor marcante no Header e no Botão
             if (coresPorLinha[linhaSelecionada]) {
-                header.style.backgroundColor = coresPorLinha[linhaSelecionada];
+                const corLinha = coresPorLinha[linhaSelecionada];
                 
-                // Ajusta o contraste do texto para linhas com fundo claro
+                header.style.backgroundColor = corLinha;
+                if (btnSubmit) btnSubmit.style.backgroundColor = corLinha;
+
+                // Contraste para linhas com fundo claro
                 if (linhaSelecionada === "linha4" || linhaSelecionada === "linha6" || linhaSelecionada === "linha15") {
                     header.style.color = "#1e293b";
+                    if (btnSubmit) btnSubmit.style.color = "#1e293b";
                 } else {
                     header.style.color = "#ffffff";
+                    if (btnSubmit) btnSubmit.style.color = "#ffffff";
                 }
             }
+
+            // 2. Aplica a cor pastel/suave no fundo da página (body)
+            if (coresFundoSuave[linhaSelecionada]) {
+                document.body.style.backgroundColor = coresFundoSuave[linhaSelecionada];
+            }
+
         } else {
+            // Se voltar para "Selecione uma linha..."
             const opcaoVazia = document.createElement("option");
             opcaoVazia.text = "Selecione uma linha primeiro...";
             opcaoVazia.value = "";
             selectEstacao.appendChild(opcaoVazia);
 
+            // Restaura as cores padrão do sistema
             header.style.backgroundColor = "#0033a0";
             header.style.color = "#ffffff";
+            document.body.style.backgroundColor = "#f4f6f8"; // Fundo cinza claro padrão
+            
+            if (btnSubmit) {
+                btnSubmit.style.backgroundColor = "#0033a0";
+                btnSubmit.style.color = "#ffffff";
+            }
         }
     });
 });
