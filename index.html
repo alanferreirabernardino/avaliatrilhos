@@ -12,10 +12,15 @@
     <header>
         <h1>AvaliaTrilhos 🚆</h1>
         <p>Acompanhe e avalie as estações de metrô e trem de São Paulo.</p>
+        
+        <!-- Barra de Ferramentas / Utilidades -->
+        <div class="toolbar">
+            <button id="btn-mapa" type="button" class="btn-util">🗺️ Mapa da Rede</button>
+            <button id="btn-contatos" type="button" class="btn-util">📞 Contatos Úteis</button>
+        </div>
     </header>
 
-    <!-- Área Principal -->
-   <!-- Área Principal com Layout em Grid -->
+    <!-- Área Principal em Duas Colunas -->
     <main>
         <div class="layout-grid">
             
@@ -84,7 +89,47 @@
         </div>
     </main>
 
-        <!-- Conectando o arquivo JavaScript -->
+    <!-- Modal 1: Mapa da Rede -->
+    <div id="modal-mapa" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Mapa do Transporte Metropolitano (SP)</h2>
+            <img src="https://www.metro.sp.gov.br/pdf/mapa-da-rede-metroferroviaria.pdf" alt="Mapa da rede" class="mapa-img" id="img-mapa">
+            <p style="margin-top: 10px; font-size: 0.85rem; color: #64748b; text-align: center;">
+                Consulte o site do <a href="https://www.metro.sp.gov.br" target="_blank">Metrô SP</a> para a versão interativa mais recente.
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal 2: Contatos Úteis -->
+    <div id="modal-contatos" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Central de Atendimento & Emergências</h2>
+            
+            <div class="lista-contatos">
+                <div class="item-contato">
+                    <strong>Metrô SP (Linhas 1, 2, 3 e 15)</strong>
+                    <p>📞 0800 770 7722 (06h às 22h)</p>
+                    <p>📱 SMS / WhatsApp Denúncia: (11) 97333-2252</p>
+                </div>
+                <div class="item-contato">
+                    <strong>CPTM (Linhas 7, 10, 11, 12 e 13)</strong>
+                    <p>📞 0800 055 0121 (24 horas)</p>
+                    <p>📱 WhatsApp: (11) 99632-0744</p>
+                </div>
+                <div class="item-contato">
+                    <strong>ViaQuatro (Linha 4-Amarela)</strong>
+                    <p>📞 0800 770 7100</p>
+                </div>
+                <div class="item-contato">
+                    <strong>ViaMobilidade (Linhas 5, 8 e 9)</strong>
+                    <p>📞 0800 770 7106</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
